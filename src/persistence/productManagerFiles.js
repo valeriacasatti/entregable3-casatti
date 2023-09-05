@@ -43,14 +43,14 @@ class ProductManagerFiles {
           (field) => !productInfo.hasOwnProperty(field)
         );
         if (missingFields.length > 0) {
-          throw new Error(`${missingFields.join(",")} is a required field`);
+          throw new Error("all fields are required");
         } else {
           //validar unico code
           const codeExist = contenidoJson.some((product) => {
-            product.code === productInfo.code;
+            return product.code === productInfo.code;
           });
           if (codeExist) {
-            throw new Error(`code ${productInfo.code} already exists!`);
+            console.log(`code ${productInfo.code} already exists!`);
           } else {
             //id autoincrementable
             const id = contenidoJson.reduce((maxId, product) => {
@@ -69,7 +69,7 @@ class ProductManagerFiles {
         }
       }
     } catch (error) {
-      throw new Error("add product error: ", error.message);
+      console.log("add product error: ", error.message);
     }
   }
 

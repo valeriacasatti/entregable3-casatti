@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import { ProductManagerFiles } from "./persistence/productManagerFiles.js";
 
 const managerProductService = new ProductManagerFiles(
@@ -8,7 +7,7 @@ const managerProductService = new ProductManagerFiles(
 
 const port = 8080;
 const app = express();
-app.use(cors());
+
 app.listen(port, () => console.log("server running"));
 
 app.get("/products", async (req, res) => {
